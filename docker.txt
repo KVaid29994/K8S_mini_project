@@ -13,3 +13,5 @@ docker images
 The command:
 docker run -p 5000:5000 <image-name>
 means: Run a Docker container and map the container’s port 5000 to your machine’s port 5000.
+
+

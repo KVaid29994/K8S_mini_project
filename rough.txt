@@ -1,0 +1,81 @@
+To **push Docker images to Minikube**, you don't actually need to **push** the image in the traditional Docker Hub sense. Minikube runs its own Docker daemon, so you can **build and use Docker images directly inside Minikube** using the following steps:
+
+---
+
+### ✅ Step-by-step: Use Docker Images with Minikube
+
+#### 🔹 1. Point Docker CLI to Minikube’s Docker daemon:
+
+```bash
+minikube docker-env
+```
+
+Then run:
+
+```bash
+eval $(minikube -p minikube docker-env)
+```
+
+> On **Windows PowerShell**, use:
+
+```powershell
+& minikube -p minikube docker-env | Invoke-Expression
+```
+
+This command configures your local shell to use **Minikube’s Docker daemon**.
+
+---
+
+#### 🔹 2. Build your Docker image inside Minikube:
+
+```bash
+docker build -t my-app:latest .
+```
+
+This builds the Docker image **inside Minikube**, making it immediately available to Kubernetes running there.
+
+---
+
+#### 🔹 3. Use the image in your Kubernetes deployment:
+
+In your YAML file (e.g., deployment.yaml):
+
+```yaml
+image: my-app:latest
+imagePullPolicy: Never
+```
+
+> Use `imagePullPolicy: Never` to tell Kubernetes **not** to try pulling the image from Docker Hub or another registry — because it already exists inside Minikube.
+
+---
+
+#### 🔹 4. Apply your deployment:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+---
+
+### 🧼 Optional: Revert Docker to your local system after you're done:
+
+```bash
+eval $(minikube docker-env --unset)
+```
+
+On PowerShell:
+
+```powershell
+& minikube docker-env --unset | Invoke-Expression
+```
+
+---
+
+Let me know if you'd like a quick YAML template or a complete example.
+minikube image ls
+
+
+✅ 2. Apply a Kubernetes YAML File
+To apply a YAML file in Kubernetes via kubectl, use:
+
+kubectl apply -f deployment

@@ -1,0 +1,179 @@
+🧠 What is Minikube?
+Minikube is a lightweight, local Kubernetes implementation. It lets you run a single-node Kubernetes cluster on your local machine
+ — ideal for learning, development, and testing.
+
+
+✅ Key Features:
+- Runs a single-node cluster inside a virtual machine or container.
+- Supports all Kubernetes components (API server, scheduler, controller, etc.).
+- Works on Windows, macOS, and Linux.
+- Can simulate multiple nodes for testing.
+- Integrates easily with kubectl, Docker, and other tools.
+
+⚙️ How it Works:
+1) Starts a VM or container on your machine.
+2) Installs the necessary Kubernetes components.
+3) Provides a ready-to-use local cluster environment.
+
+
+🚀 Common Minikube Commands:
+Command	                            Description
+minikube start	                    Start the Minikube cluster
+minikube status	                    Check cluster status
+minikube stop	                    Stop the cluster
+minikube delete	                    Delete the cluster
+minikube dashboard	                Launch Kubernetes Dashboard UI
+minikube service <service-name>	    Access a service from the browser
+
+
+kubectl get all -A : This will list all pods, services, deployments, etc., from all namespaces in your Kubernetes cluster.
+kubectl get pods -A - Shows the list of pods
+kubectl get nodes
+
+
+Here’s a list of commonly used **Minikube CLI commands** (Minikube command-line tool) organized by purpose:
+
+---
+
+## 🟢 **Setup & Cluster Management**
+
+| Command            | Description                          |
+| ------------------ | ------------------------------------ |
+| `minikube start`   | Start a local Kubernetes cluster.    |
+| `minikube stop`    | Stop the running cluster.            |
+| `minikube delete`  | Delete the cluster completely.       |
+| `minikube status`  | Show status of the Minikube cluster. |
+| `minikube pause`   | Pause all nodes in the cluster.      |
+| `minikube unpause` | Resume the cluster after pause.      |
+
+---
+
+## ⚙️ **Configuration & Environment**
+
+| Command                             | Description                                           |
+| ----------------------------------- | ----------------------------------------------------- |
+| `minikube config set <key> <value>` | Set a configuration option (e.g., memory, cpus).      |
+| `minikube config view`              | View all current configurations.                      |
+| `minikube docker-env`               | Configure your shell to use Minikube’s Docker daemon. |
+| `eval $(minikube docker-env)`       | Activate the Docker environment in shell.             |
+
+---
+
+## 🌐 **Networking & Services**
+
+| Command                           | Description                                     |
+| --------------------------------- | ----------------------------------------------- |
+| `minikube service <service-name>` | Open the URL for a service in the browser.      |
+| `minikube tunnel`                 | Create a route to access LoadBalancer services. |
+| `minikube ip`                     | Show the IP address of the Minikube VM.         |
+
+---
+
+## 📊 **Monitoring & UI**
+
+| Command                           | Description                                         |
+| --------------------------------- | --------------------------------------------------- |
+| `minikube dashboard`              | Launch the Kubernetes Dashboard UI.                 |
+| `minikube addons list`            | Show list of available addons.                      |
+| `minikube addons enable <addon>`  | Enable a specific addon (e.g., ingress, dashboard). |
+| `minikube addons disable <addon>` | Disable an addon.                                   |
+
+---
+
+## 🧪 **Advanced & Debugging**
+
+| Command                                | Description                             |
+| -------------------------------------- | --------------------------------------- |
+| `minikube ssh`                         | SSH into the Minikube VM.               |
+| `minikube logs`                        | View logs from Minikube components.     |
+| `minikube mount <host_path>:<vm_path>` | Mount a directory into the Minikube VM. |
+| `minikube profile <name>`              | Set or get the active Minikube profile. |
+| `minikube node list`                   | List nodes in the Minikube cluster.     |
+
+---
+
+
+
+Here’s a handy list of **`kubectl` commands** – the CLI tool to interact with a Kubernetes cluster – organized like easy-to-read notes:
+
+---
+
+## 🟢 **Basics**
+
+| Command                | Description                           |
+| ---------------------- | ------------------------------------- |
+| `kubectl version`      | Show client and server versions.      |
+| `kubectl config view`  | Show kubeconfig settings.             |
+| `kubectl cluster-info` | Show cluster info (API server, etc.). |
+| `kubectl get nodes`    | List all nodes in the cluster.        |
+
+---
+
+## 📦 **Pods**
+
+| Command                               | Description                             |
+| ------------------------------------- | --------------------------------------- |
+| `kubectl get pods`                    | List all pods.                          |
+| `kubectl get pods -o wide`            | List pods with extra details (node/IP). |
+| `kubectl describe pod <pod-name>`     | Detailed info about a pod.              |
+| `kubectl delete pod <pod-name>`       | Delete a pod.                           |
+| `kubectl logs <pod-name>`             | View logs of a pod.                     |
+| `kubectl exec -it <pod-name> -- bash` | Access a pod’s shell.                   |
+
+---
+
+## ⚙️ **Deployments**
+
+| Command                                        | Description                         |
+| ---------------------------------------------- | ----------------------------------- |
+| `kubectl get deployments`                      | List deployments.                   |
+| `kubectl create -f <deployment.yaml>`          | Create deployment from a YAML file. |
+| `kubectl apply -f <deployment.yaml>`           | Apply changes to deployment.        |
+| `kubectl delete deployment <name>`             | Delete a deployment.                |
+| `kubectl scale deployment <name> --replicas=3` | Scale number of pods.               |
+| `kubectl rollout restart deployment <name>`    | Restart a deployment.               |
+| `kubectl rollout status deployment <name>`     | Check rollout status.               |
+
+---
+
+## 🌐 **Services**
+
+| Command                                                           | Description                       |
+| ----------------------------------------------------------------- | --------------------------------- |
+| `kubectl get services`                                            | List all services.                |
+| `kubectl expose deployment <name> --port=8080 --target-port=5000` | Expose a deployment as a service. |
+| `kubectl describe svc <service-name>`                             | Show service details.             |
+
+---
+
+## 📂 **YAML (Manifest) Management**
+
+| Command                         | Description                    |
+| ------------------------------- | ------------------------------ |
+| `kubectl apply -f <file>.yaml`  | Create or update a resource.   |
+| `kubectl delete -f <file>.yaml` | Delete the defined resource.   |
+| `kubectl get -f <file>.yaml`    | Get info on resources in YAML. |
+
+---
+
+## 🔍 **Namespaces, Configs, Secrets**
+
+| Command                                                         | Description             |
+| --------------------------------------------------------------- | ----------------------- |
+| `kubectl get namespaces`                                        | List namespaces.        |
+| `kubectl config use-context <context>`                          | Switch cluster context. |
+| `kubectl create secret generic <name> --from-literal=key=value` | Create secret.          |
+| `kubectl get configmaps`                                        | List ConfigMaps.        |
+
+---
+
+## 🧪 **Debugging & Logs**
+
+| Command                              | Description                                  |
+| ------------------------------------ | -------------------------------------------- |
+| `kubectl logs <pod>`                 | Logs from a pod.                             |
+| `kubectl describe <resource> <name>` | Detailed info (events, errors, etc.).        |
+| `kubectl get events`                 | List recent cluster events.                  |
+| `kubectl top pod`                    | See CPU/memory usage (needs metrics-server). |
+
+
