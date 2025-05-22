@@ -1,0 +1,15 @@
+✅ Basic Docker Image Build
+If you have a Dockerfile in your current directory:
+
+docker build -t your-image-name .
+-t assigns a tag (name) to your image.
+. tells Docker to use the current directory as the build context.
+
+
+
+🐳 Check Built Images
+docker images
+
+The command:
+docker run -p 5000:5000 <image-name>
+means: Run a Docker container and map the container’s port 5000 to your machine’s port 5000.
