@@ -1,0 +1,41 @@
+🔄 What is Load Balancing in Kubernetes? 
+
+Load balancing in Kubernetes is the process of distributing incoming network traffic across multiple Pods to ensure:
+
+High availability
+
+Scalability
+
+Efficient resource usage
+
+Fault tolerance
+
+⚙️ Types of Load Balancing in Kubernetes
+Internal Load Balancing (within cluster)
+
+Handled by Kube-proxy using Services.
+
+When multiple Pods are behind a Service (e.g., ClusterIP), Kubernetes automatically balances traffic between them.
+
+External Load Balancing (outside cluster)
+
+Used when exposing services to users outside the cluster.
+
+Kubernetes uses:
+
+Service of type LoadBalancer (Cloud-provider-managed)
+
+Ingress Controllers (Nginx, Traefik, etc.)
+
+NodePort + External Load Balancer combo in local environments like Minikube.
+
+🧠 In Simple Words
+Kubernetes load balancing ensures that no single pod or node gets overwhelmed by traffic, and it smartly routes requests to available and healthy pods.
+
+
+🔄 Kubernetes Load Balancing is done via:
+Kube-proxy (internal cluster load balancer)
+
+Service IP abstraction
+
+Round-robin by default among healthy pods

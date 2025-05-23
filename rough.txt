@@ -78,4 +78,4 @@ minikube image ls
 ✅ 2. Apply a Kubernetes YAML File
 To apply a YAML file in Kubernetes via kubectl, use:
 
-kubectl apply -f deployment
+kubectl apply -f deployment.yaml

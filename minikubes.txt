@@ -29,7 +29,7 @@ minikube service <service-name>	    Access a service from the browser
 kubectl get all -A : This will list all pods, services, deployments, etc., from all namespaces in your Kubernetes cluster.
 kubectl get pods -A - Shows the list of pods
 kubectl get nodes
-
+minikube service k8s-mini-project
 
 Here’s a list of commonly used **Minikube CLI commands** (Minikube command-line tool) organized by purpose:
 

@@ -14,9 +14,23 @@ spec:
       containers:
       - name: k8s-mini-project
         image: k8s-mini-project:latest
+        imagePullPolicy: Never
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "200m"
         ports:
         - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-mini-project
+spec:
+  selector:
+    app: k8s-mini-project
+  ports:
+  - port: 8080
+    targetPort: 5000
